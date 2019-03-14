@@ -10,6 +10,7 @@
 # Dependencies:
 #  - ~/.my.cnf or mysql_config_editor with user/pass for user running the script.  
 #  - logrotate to keep log files in check
+#  - cronjob to run this script regularly
 
 # Full proclist that can be easily parsed by awk
 PROCLIST_LOG="/var/log/mysql_proclist/proclist.log"
