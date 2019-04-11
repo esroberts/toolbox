@@ -14,7 +14,15 @@ Use `GRANT ALL ON '%'.*, not *.*
 > GRANT SELECT ON schema.* TO 'user'@'10.%';
 
 -- GRANT read/write to a schema
-> GRANT SELECT, INSERT, DELETE, UPDATE schema.* TO 'user'@'10.%';
+> GRANT SELECT, INSERT, DELETE, UPDATE ON schema.* TO 'user'@'10.%';
+
+-- Make sure user has a password
+>  set password for 'user'@'10.%' = password('secret');
+
+-- Flush privileges to make them active.
+-- When you add new users or make changes they won't 
+-- be effective unless you flush privileges.
+> FLUSH PRIVILEGES;
 
 -- show grants for a user
 > show grants for 'user'@'10.%';
