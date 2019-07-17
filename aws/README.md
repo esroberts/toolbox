@@ -18,6 +18,7 @@ aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 \
     "first.example.com.",
     "second.example.com."
 ]
+```
 
 ### Filter EC2 by Tag Name, Print IP, Name Tag
 ```
