@@ -27,3 +27,12 @@ aws ec2 describe-instances --query
 --filters "Name=tag:Name,Values=some*wildcard" | grep 172 | tr -s
 '\n' ' '  | tr -s '", "' ' '
 ```
+
+### CSV of Domain Records
+```
+aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 | 
+jq -r '.ResourceRecordSets[] | 
+select(.Name | endswith("example.com.")) | "\(.Name), \(.ResourceRecords[0].Value)"'
+
+api.example.com, internal.example.com
+```
