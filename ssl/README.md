@@ -18,3 +18,9 @@
 ```
 > openssl x509 -enddate -noout -in file.pem
 ```
+
+## Check contents of crt file
+
+```
+openssl x509 -in certificate.crt -text -noout
+```
