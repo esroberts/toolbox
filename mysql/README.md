@@ -33,3 +33,7 @@ Use `GRANT ALL ON '%'.*, not *.*
 | GRANT SELECT, INSERT, UPDATE, DELETE ON `schema`.* TO 'user'@'10.%' |
 +----------------------------------------------------------------------+
 ```
+
+## Migrate Users Between Servers
+
+https://wisdmlabs.com/blog/migrate-mysql-users-one-server-another/
