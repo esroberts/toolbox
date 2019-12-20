@@ -36,3 +36,17 @@ select(.Name | endswith("example.com.")) | "\(.Name), \(.ResourceRecords[0].Valu
 
 api.example.com, internal.example.com
 ```
+
+### Find All Records That Start With String
+
+```
+# CNAMES
+aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r
+'.ResourceRecordSets[] | select( select(.ResourceRecords != null) and
+select(.ResourceRecords[0].Value | startswith("some-string"))) | "\(.Name)"'
+
+# A Records
+aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r
+'.ResourceRecordSets[] | select(.AliasTarget.DNSName != null)
+| select(.AliasTarget.DNSName | startswith("some-string")) | "\(.Name)"'
+```
