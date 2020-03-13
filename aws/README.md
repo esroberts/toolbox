@@ -41,12 +41,12 @@ api.example.com, internal.example.com
 
 ```
 # CNAMES
-aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r
-'.ResourceRecordSets[] | select( select(.ResourceRecords != null) and
+aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r \
+'.ResourceRecordSets[] | select( select(.ResourceRecords != null) and \
 select(.ResourceRecords[0].Value | startswith("some-string"))) | "\(.Name)"'
 
 # A Records
-aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r
-'.ResourceRecordSets[] | select(.AliasTarget.DNSName != null)
+aws route53 list-resource-record-sets --hosted-zone-id ZAT8123456789 |  jq -r \
+'.ResourceRecordSets[] | select(.AliasTarget.DNSName != null) \
 | select(.AliasTarget.DNSName | startswith("some-string")) | "\(.Name)"'
 ```
